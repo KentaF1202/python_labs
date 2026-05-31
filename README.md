@@ -28,7 +28,7 @@ A small set of libraries that are especially valuable in day-to-day Python work.
 → *pandas*  
 → *pydantic*  
 → *python-dotenv*  
-→ *uv*
+→ *uv (not a library)*
 
 ### Categories
 Libraries are arranged in the following major areas:
