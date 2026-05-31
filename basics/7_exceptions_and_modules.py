@@ -22,6 +22,7 @@ def calculate():
     print("This line is never reached")
     return result
 
+
 try:
     calculate()
 except ZeroDivisionError as error:
@@ -37,10 +38,12 @@ print()
 
 # Raising exceptions manually
 
+
 def get_positive_number(value):
     if value <= 0:
         raise ValueError("Only positive numbers are allowed")
     return value
+
 
 try:
     get_positive_number(-5)
@@ -51,6 +54,7 @@ print()
 
 # Exception bubbling with nested function calls
 
+
 def inner():
     raise KeyError("missing-key")
 
@@ -59,6 +63,7 @@ def outer():
     print("Entering outer()")
     inner()
     print("Leaving outer()")
+
 
 try:
     outer()
@@ -77,12 +82,14 @@ print("After outer() catch")
 print("\n--- Import Resolution Mechanics ---")
 
 import sys
+
 print("sys.path (first entries):")
 for path in sys.path[:5]:
     print(" ", path)
 
 print("\nBuilt-in modules can be imported without file paths:")
 import math
+
 print("math.sqrt(16)=", math.sqrt(16))
 
 # If there is a local package or module with the same name it can shadow standard libraries,
@@ -145,7 +152,7 @@ def main():
 
 print("Top-level code always runs when the module is imported or executed.")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
     print("__name__ is __main__, so this block runs.")
 else:

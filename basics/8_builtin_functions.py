@@ -12,8 +12,10 @@ print("--- Lambda Functions ---")
 
 # Regular function
 
+
 def add(a, b):
     return a + b
+
 
 print("add(2, 3):", add(2, 3))
 
@@ -189,43 +191,50 @@ print("id(value):", id(value))
 print("hash(value):", hash(value))
 
 # dir shows attributes and methods of an object
-print("dir(value) sample:", [name for name in dir(value) if name.startswith('is')][:5])
+print("dir(value) sample:", [name for name in dir(value) if name.startswith("is")][:5])
 
 # globals() returns the current global namespace dictionary
-print("'numbers' in globals():", 'numbers' in globals())
+print("'numbers' in globals():", "numbers" in globals())
+
 
 # locals() returns the current local namespace dictionary
 def show_locals():
     local_var = 123
-    print("local_var in locals():", 'local_var' in locals())
+    print("local_var in locals():", "local_var" in locals())
     print("locals() keys sample:", list(locals().keys())[:5])
+
 
 show_locals()
 
 # ============================================================
 # 10. TYPE CHECKS AND ATTRIBUTE ACCESS
 # ============================================================
-print("\n--- isinstance(), issubclass(), getattr(), setattr(), hasattr(), delattr() ---")
+print(
+    "\n--- isinstance(), issubclass(), getattr(), setattr(), hasattr(), delattr() ---"
+)
+
 
 class Animal:
     pass
+
 
 class Dog(Animal):
     def __init__(self, name):
         self.name = name
 
-print("isinstance(Dog('Fido'), Dog):", isinstance(Dog('Fido'), Dog))
-print("isinstance(Dog('Fido'), Animal):", isinstance(Dog('Fido'), Animal))
+
+print("isinstance(Dog('Fido'), Dog):", isinstance(Dog("Fido"), Dog))
+print("isinstance(Dog('Fido'), Animal):", isinstance(Dog("Fido"), Animal))
 print("issubclass(Dog, Animal):", issubclass(Dog, Animal))
 print("issubclass(Animal, Dog):", issubclass(Animal, Dog))
 
 pet = Dog("Fido")
-print("hasattr(pet, 'name'):", hasattr(pet, 'name'))
-print("getattr(pet, 'name'):", getattr(pet, 'name'))
-setattr(pet, 'age', 5)
-print("getattr(pet, 'age') after setattr:", getattr(pet, 'age'))
-delattr(pet, 'age')
-print("hasattr(pet, 'age') after delattr:", hasattr(pet, 'age'))
+print("hasattr(pet, 'name'):", hasattr(pet, "name"))
+print("getattr(pet, 'name'):", getattr(pet, "name"))
+setattr(pet, "age", 5)
+print("getattr(pet, 'age') after setattr:", getattr(pet, "age"))
+delattr(pet, "age")
+print("hasattr(pet, 'age') after delattr:", hasattr(pet, "age"))
 
 # ============================================================
 # 11. ITER and NEXT
@@ -254,10 +263,10 @@ print("callable(lambda x: x):", callable(lambda x: x))
 # ============================================================
 print("\n--- eval() and exec() ---")
 
-expr = '2 + 3 * 4'
+expr = "2 + 3 * 4"
 print("eval(expr):", eval(expr))
 
-code = 'result = 10\nprint(\"exec result:\", result)'
+code = 'result = 10\nprint("exec result:", result)'
 exec(code)
 
 # Use eval and exec carefully; they execute dynamic code and can be unsafe with untrusted input.

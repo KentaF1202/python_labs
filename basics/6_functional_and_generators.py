@@ -13,26 +13,33 @@ print("--- First-Class Functions ---")
 
 # Assigning a function to a variable
 
+
 def greet():
     print("Hello!")
+
 
 say_hello = greet  # function object assigned to a variable
 say_hello()  # call the function through the new name
 
 # Passing a function as an argument
 
+
 def run_twice(func):
     func()
     func()
+
 
 run_twice(greet)
 
 # Returning a function from another function
 
+
 def make_multiplier(factor):
     def multiply(value):
         return value * factor
+
     return multiply
+
 
 double = make_multiplier(2)
 triple = make_multiplier(3)
@@ -67,6 +74,7 @@ def make_counter():
 
     return counter
 
+
 counter_a = make_counter()
 print("counter_a():", counter_a())
 print("counter_a():", counter_a())
@@ -76,10 +84,13 @@ print("counter_b():", counter_b())  # separate closure with its own state
 
 # Another closure example: creating a personalized greeter
 
+
 def make_greeter(name):
     def greeter():
         print(f"Hello, {name}!")
+
     return greeter
+
 
 alice_greeter = make_greeter("Alice")
 alice_greeter()
@@ -100,16 +111,19 @@ def simple_decorator(func):
         result = func(*args, **kwargs)
         print("After calling", func.__name__)
         return result
+
     return wrapper
 
-@simple_decorator
 
+@simple_decorator
 def say_goodbye():
     print("Goodbye!")
+
 
 say_goodbye()
 
 # Decorator with arguments and return value
+
 
 def timer_decorator(func):
     import time
@@ -123,23 +137,27 @@ def timer_decorator(func):
 
     return wrapper
 
-@timer_decorator
 
+@timer_decorator
 def compute_sum(n):
     return sum(range(n))
+
 
 print("compute_sum(1000000):", compute_sum(1000000))
 
 # Decorators can be applied manually too
 
+
 def uppercase_decorator(func):
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs).upper()
+
     return wrapper
 
 
 def say_name(name):
     return f"Hello, {name}"
+
 
 say_name = uppercase_decorator(say_name)
 print(say_name("Alice"))
@@ -158,6 +176,7 @@ def count_up_to(max_value):
     while count <= max_value:
         yield count
         count += 1
+
 
 for number in count_up_to(5):
     print(number)

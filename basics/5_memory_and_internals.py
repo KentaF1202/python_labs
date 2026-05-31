@@ -71,7 +71,9 @@ print("id(list_b):", id(list_b))
 
 # Aliasing example: two names refer to the same mutable object
 list_c = list_a
-print("list_c is list_a:", list_c is list_a)  # True because list_c and list_a are same object
+print(
+    "list_c is list_a:", list_c is list_a
+)  # True because list_c and list_a are same object
 list_c.append(4)
 print("list_a after modifying list_c:", list_a)
 
@@ -85,6 +87,7 @@ print("\n--- Variable Scope Layers ---")
 
 global_var = "I am global"
 
+
 def outer_function():
     enclosing_var = "I am enclosing"
 
@@ -97,6 +100,7 @@ def outer_function():
 
     inner_function()
 
+
 outer_function()
 
 # Global scope example
@@ -105,10 +109,12 @@ print("Global var outside functions:", global_var)
 # Using global and nonlocal keywords
 count = 0
 
+
 def modify_global():
     global count
     count += 1
     print("Inside modify_global, count:", count)
+
 
 modify_global()
 
@@ -124,6 +130,7 @@ def outer_counter():
     print("First call:", inner_counter())
     print("Second call:", inner_counter())
 
+
 outer_counter()
 
 # ============================================================
@@ -135,6 +142,7 @@ outer_counter()
 print("\n--- Garbage Collection Basics ---")
 
 import gc
+
 print("Garbage collector enabled:", gc.isenabled())
 
 # Create an object and multiple references to it
@@ -166,10 +174,12 @@ print("Forced garbage collection run completed.")
 # NOTE: Objects with circular references can still be collected by gc.
 # Example of a circular reference:
 
+
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
+
 
 node1 = Node(1)
 node2 = Node(2)
@@ -196,5 +206,9 @@ print("\n=== Key Takeaways ===")
 print("- Mutable objects can change their contents; immutable objects cannot.")
 print("- '==' compares values; 'is' compares object identity.")
 print("- Scope defines where names are visible: local, enclosing, global, built-in.")
-print("- Python uses reference counting plus a garbage collector for memory management.")
-print("- Circular references are handled by the garbage collector when normal reference counting is not enough.")
+print(
+    "- Python uses reference counting plus a garbage collector for memory management."
+)
+print(
+    "- Circular references are handled by the garbage collector when normal reference counting is not enough."
+)

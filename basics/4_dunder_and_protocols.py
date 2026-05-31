@@ -8,6 +8,7 @@
 # __str__ and __repr__ control how objects appear when printed or
 # inspected in the console.
 
+
 class Product:
     def __init__(self, name, price):
         self.name = name
@@ -21,6 +22,7 @@ class Product:
         # __str__ should return a readable representation for users
         return f"{self.name} costs ${self.price:.2f}"
 
+
 p = Product("Laptop", 999.99)
 print("--- Object Representation ---")
 print("repr:", repr(p))
@@ -32,6 +34,7 @@ print("print directly:", p)
 # ============================================================
 # Python objects can be made iterable by implementing __iter__ and __next__.
 # __iter__ returns the iterator object, and __next__ returns the next value.
+
 
 class Countdown:
     def __init__(self, start):
@@ -48,6 +51,7 @@ class Countdown:
         value = self.current
         self.current -= 1
         return value
+
 
 print("\n--- Iterator Protocol ---")
 for number in Countdown(5):
@@ -68,6 +72,7 @@ print(next(iterator))
 # Context managers implement __enter__ and __exit__.
 # They are used with the 'with' statement to set up and tear down resources.
 
+
 class FileWriter:
     def __init__(self, filename):
         self.filename = filename
@@ -87,6 +92,7 @@ class FileWriter:
         # Return False to propagate exceptions, True to suppress them
         return False
 
+
 print("\n--- Context Manager ---")
 with FileWriter("sample.txt") as f:
     f.write("Hello from a context manager!\n")
@@ -95,6 +101,7 @@ print("File context block completed.")
 
 # A simple context manager for timing operations
 import time
+
 
 class Timer:
     def __enter__(self):
@@ -106,6 +113,7 @@ class Timer:
         elapsed = self.end - self.start
         print(f"Elapsed time: {elapsed:.4f} seconds")
 
+
 print("\n--- Timing Context Manager ---")
 with Timer():
     total = sum(range(1000000))
@@ -116,6 +124,7 @@ with Timer():
 # ============================================================
 # Operator overloading means defining how objects behave with operators
 # like +, -, *, ==, and more. These are controlled by dunder methods.
+
 
 class Vector2D:
     def __init__(self, x, y):
@@ -142,6 +151,7 @@ class Vector2D:
 
     def __str__(self):
         return f"({self.x}, {self.y})"
+
 
 v1 = Vector2D(2, 3)
 v2 = Vector2D(4, 1)

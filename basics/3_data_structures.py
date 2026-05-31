@@ -101,13 +101,15 @@ print(f"Slice [0:2]: {colors[0:2]}")
 # colors[0] = "yellow"  # TypeError!
 
 # Tuple unpacking - extract values into separate variables
-print(f"\nTuple unpacking:")
+print("\nTuple unpacking:")
 color1, color2, color3 = colors
 print(f"color1: {color1}, color2: {color2}, color3: {color3}")
+
 
 # Tuples are useful for returning multiple values from functions
 def get_coordinates():
     return (10, 20)  # Return multiple values as a tuple
+
 
 x, y = get_coordinates()
 print(f"Coordinates: x={x}, y={y}")
@@ -135,12 +137,7 @@ print("3. DICTIONARIES")
 print("=" * 60)
 
 # Creating dictionaries
-person = {
-    "name": "Alice",
-    "age": 30,
-    "city": "New York",
-    "job": "Engineer"
-}
+person = {"name": "Alice", "age": 30, "city": "New York", "job": "Engineer"}
 
 scores = {"math": 95, "english": 87, "science": 92}
 empty_dict = {}
@@ -159,17 +156,17 @@ print(f"Country with default: {person.get('country', 'Unknown')}")
 
 # Modifying dictionaries
 print(f"\nOriginal person: {person}")
-person['age'] = 31  # Change a value
+person["age"] = 31  # Change a value
 print(f"After changing age: {person}")
 
-person['country'] = "USA"  # Add a new key-value pair
+person["country"] = "USA"  # Add a new key-value pair
 print(f"After adding country: {person}")
 
 # Removing items
-del person['country']  # Delete a key-value pair
+del person["country"]  # Delete a key-value pair
 print(f"After deleting country: {person}")
 
-removed_value = person.pop('job')  # Remove and return value
+removed_value = person.pop("job")  # Remove and return value
 print(f"After pop (removed '{removed_value}'): {person}")
 
 # Useful dictionary methods
@@ -181,11 +178,11 @@ print(f"\nIs 'name' in person? {'name' in person}")
 print(f"Length of person: {len(person)}")
 
 # Iterating through dictionaries
-print(f"\nIterating through person:")
+print("\nIterating through person:")
 for key in person:
     print(f"  {key}: {person[key]}")
 
-print(f"\nIterating with .items():")
+print("\nIterating with .items():")
 for key, value in person.items():
     print(f"  {key}: {value}")
 
@@ -294,7 +291,7 @@ repeated = [letter * 3 for letter in letters]
 print(f"Repeated letters: {repeated}")
 
 # Equivalent without list comprehension (for comparison)
-print(f"\nWithout list comprehension:")
+print("\nWithout list comprehension:")
 squares_old = []
 for x in numbers:
     squares_old.append(x**2)
@@ -364,11 +361,7 @@ print("8. PRACTICAL EXAMPLES")
 print("=" * 60)
 
 # Example 1: Processing student data
-students = {
-    "Alice": [85, 90, 88],
-    "Bob": [92, 88, 95],
-    "Charlie": [78, 85, 80]
-}
+students = {"Alice": [85, 90, 88], "Bob": [92, 88, 95], "Charlie": [78, 85, 80]}
 
 # Calculate average for each student using dict comprehension
 averages = {name: sum(scores) / len(scores) for name, scores in students.items()}
@@ -395,7 +388,7 @@ numbers = [10, 23, 45, 12, 67, 34, 89, 5]
 categories = {
     "small": [x for x in numbers if x < 20],
     "medium": [x for x in numbers if 20 <= x < 60],
-    "large": [x for x in numbers if x >= 60]
+    "large": [x for x in numbers if x >= 60],
 }
 print(f"Numbers by category: {categories}")
 

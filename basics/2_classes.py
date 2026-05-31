@@ -6,7 +6,7 @@
 # ============================================================
 # A class is a blueprint or template for creating objects
 # An object is an instance (a specific example) of a class
-# 
+#
 # Think of it like this:
 # - A class is like a recipe for making cookies
 # - An object is an actual cookie made from that recipe
@@ -17,11 +17,13 @@
 # ============================================================
 # To create a class, use the 'class' keyword
 
+
 class Dog:
     """A simple class representing a dog"""
-    
+
     # These are attributes - properties that describe the object
     species = "Canis familiaris"  # This is a CLASS attribute (shared by all dogs)
+
 
 # Creating objects (instances) from the Dog class
 # We create a dog by calling the class name like a function
@@ -39,9 +41,10 @@ print("dog2 is an instance of Dog:", isinstance(dog2, Dog))
 # It's like the "setup" for a new object
 # Methods in a class start and end with double underscores (__)
 
+
 class Person:
     """A class representing a person"""
-    
+
     def __init__(self, name, age):
         # 'self' represents the object itself
         # self.name creates an instance attribute called 'name'
@@ -49,6 +52,7 @@ class Person:
         self.name = name
         self.age = age
         self.email = None  # Initialize with None (no value yet)
+
 
 # Create a person object
 # When we do this, __init__ is automatically called
@@ -83,27 +87,29 @@ print(f"Email: {person1.email}")
 # They describe what objects of that class can do
 # The first parameter is always 'self'
 
+
 class Car:
     """A class representing a car"""
-    
+
     def __init__(self, brand, color):
         self.brand = brand
         self.color = color
         self.speed = 0  # Cars start at 0 speed
-    
+
     # A method that doesn't change the object (just returns info)
     def describe(self):
         return f"A {self.color} {self.brand} car"
-    
+
     # A method that changes the object's state
     def accelerate(self):
         self.speed += 10
         print(f"Accelerating! Speed is now {self.speed} mph")
-    
+
     # A method with parameters
     def change_color(self, new_color):
         self.color = new_color
         print(f"Car color changed to {self.color}")
+
 
 # Create car objects
 print("\n--- Car Objects and Methods ---")
@@ -128,17 +134,19 @@ car1.change_color("green")
 # Class attributes: shared by all instances of the class
 # Instance attributes: unique to each object
 
+
 class Book:
     """A class representing a book"""
-    
+
     # Class attribute - same for all books
     medium = "paper"  # Could be "digital" too, but default is "paper"
-    
+
     def __init__(self, title, author, pages):
         # Instance attributes - different for each book
         self.title = title
         self.author = author
         self.pages = pages
+
 
 print("\n--- Class vs Instance Attributes ---")
 book1 = Book("Python Basics", "John Doe", 300)
@@ -154,7 +162,7 @@ print(f"Book 2 medium: {book2.medium}")
 
 # Change class attribute (affects all instances)
 Book.medium = "digital"
-print(f"\nAfter changing class attribute:")
+print("\nAfter changing class attribute:")
 print(f"Book 1 medium: {book1.medium}")
 print(f"Book 2 medium: {book2.medium}")
 
@@ -163,17 +171,18 @@ print(f"Book 2 medium: {book2.medium}")
 # ============================================================
 # A more practical example combining multiple concepts
 
+
 class BankAccount:
     """A class representing a bank account"""
-    
+
     bank_name = "Python Bank"  # Class attribute
-    
+
     def __init__(self, account_holder, initial_balance=0):
         # Instance attributes
         self.account_holder = account_holder
         self.balance = initial_balance
         self.transactions = []  # List to track transactions
-    
+
     def deposit(self, amount):
         """Add money to the account"""
         if amount > 0:
@@ -182,7 +191,7 @@ class BankAccount:
             print(f"Deposited ${amount}. New balance: ${self.balance}")
         else:
             print("Deposit amount must be positive")
-    
+
     def withdraw(self, amount):
         """Remove money from the account"""
         if amount > self.balance:
@@ -193,20 +202,21 @@ class BankAccount:
             print(f"Withdrew ${amount}. New balance: ${self.balance}")
         else:
             print("Withdrawal amount must be positive")
-    
+
     def get_balance(self):
         """Return the current balance"""
         return self.balance
-    
+
     def get_account_info(self):
         """Return account information"""
         return f"Account Holder: {self.account_holder}, Balance: ${self.balance}"
-    
+
     def show_transactions(self):
         """Display all transactions"""
         print(f"\nTransactions for {self.account_holder}:")
         for transaction in self.transactions:
             print(f"  - {transaction}")
+
 
 # Create bank accounts
 print("\n--- Bank Account Example ---")
@@ -235,30 +245,32 @@ account2.show_transactions()
 # Special methods start and end with double underscores
 # They define how objects behave with Python's built-in operations
 
+
 class Student:
     """A class representing a student"""
-    
+
     def __init__(self, name, grade):
         self.name = name
         self.grade = grade
-    
+
     # __str__ defines what print() shows
     def __str__(self):
         return f"Student: {self.name} (Grade: {self.grade})"
-    
+
     # __repr__ defines what appears in the console
     def __repr__(self):
         return f"Student('{self.name}', '{self.grade}')"
-    
+
     # __len__ allows len() to work on your object
     def __len__(self):
         return len(self.name)
-    
+
     # __eq__ allows comparison with ==
     def __eq__(self, other):
         if isinstance(other, Student):
             return self.name == other.name and self.grade == other.grade
         return False
+
 
 print("\n--- Special Methods ---")
 student1 = Student("Charlie", "A")
@@ -282,24 +294,31 @@ print(f"student1 == student3: {student1 == student3}")  # True
 # The parent class is called the superclass
 # The child class is called the subclass
 
+
 class Animal:
     """Parent class"""
+
     def __init__(self, name):
         self.name = name
-    
+
     def speak(self):
         return f"{self.name} makes a sound"
 
+
 class Dog2(Animal):
     """Child class that inherits from Animal"""
+
     # Override the speak method
     def speak(self):
         return f"{self.name} barks: Woof!"
 
+
 class Cat(Animal):
     """Another child class"""
+
     def speak(self):
         return f"{self.name} meows: Meow!"
+
 
 print("\n--- Inheritance Example ---")
 dog = Dog2("Rex")

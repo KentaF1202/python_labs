@@ -134,22 +134,27 @@ while counter < 3:
 # You define a function once, then call it (use it) multiple times
 # Functions help organize code and avoid repetition
 
+
 # Defining a simple function (no inputs, no outputs)
 def say_hello():
     print("Hello, friend!")
 
+
 # Call the function (run it)
 say_hello()  # This prints: Hello, friend!
 say_hello()  # We can call it again
+
 
 # Function with parameters (inputs)
 # Parameters are values you pass to the function
 def greet(name):
     print("Hello,", name + "!")
 
+
 # Call the function with different values
 greet("Alice")  # Prints: Hello, Alice!
-greet("Bob")    # Prints: Hello, Bob!
+greet("Bob")  # Prints: Hello, Bob!
+
 
 # Function that returns a value (output)
 # The return keyword sends a value back to whoever called the function
@@ -157,15 +162,18 @@ def add_numbers(a, b):
     result = a + b
     return result  # Send the result back
 
+
 # Call the function and store the result in a variable
 sum_result = add_numbers(5, 3)
 print("5 + 3 =", sum_result)  # Prints: 5 + 3 = 8
+
 
 # Function with multiple parameters and operations
 def calculate_age(birth_year):
     current_year = 2024
     age = current_year - birth_year
     return age
+
 
 my_age = calculate_age(2000)
 print("Your age:", my_age)  # Prints: Your age: 24
@@ -175,16 +183,17 @@ print("Your age:", my_age)  # Prints: Your age: 24
 # ============================================================
 # Let's create a simple program that uses all these concepts
 
+
 def welcome_user():
     """This function welcomes the user and demonstrates basic concepts"""
     print("\n=== Simple Calculator ===")
-    
+
     # Get input from user (commented out for automatic running)
     num1 = int(input("Enter first number: "))
     num2 = int(input("Enter second number: "))
-    
+
     print(f"You entered: {num1} and {num2}")
-    
+
     # If statement to check which number is bigger
     if num1 > num2:
         print(f"{num1} is bigger than {num2}")
@@ -192,12 +201,13 @@ def welcome_user():
         print(f"{num2} is bigger than {num1}")
     else:
         print("Both numbers are equal")
-    
+
     # Loop to show multiplication table
     print(f"\nMultiplication table of {num1}:")
     for i in range(1, 6):
         result = num1 * i
         print(f"{num1} × {i} = {result}")
+
 
 # Call the function to run the complete example
 welcome_user()
