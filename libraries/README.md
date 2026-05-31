@@ -68,7 +68,7 @@
 **seaborn** - 🟠 Important, 🟣 Very strong community, statistical data visualization library built on matplotlib.  
 **xarray** - 🟡 Useful importance, 🟢 Strong community, labeled multi-dimensional arrays for scientific data.  
 
-## Database
+## Databases
 **alembic** - 🟠 Important, 🟢 Strong community, database migration tool built for SQLAlchemy.  
 **asyncpg** - 🟠 Important, 🟢 Strong community, high-performance PostgreSQL driver with async support.  
 **duckdb** - 🟠 Important, 🟠 Growing community, in-process SQL OLAP database for local query workloads.  

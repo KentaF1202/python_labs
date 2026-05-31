@@ -1,4 +1,4 @@
-# Database
+# Databases
 **alembic** - 🟠 Important, 🟢 Strong community, database migration tool built for SQLAlchemy.  
 **asyncpg** - 🟠 Important, 🟢 Strong community, high-performance PostgreSQL driver with async support.  
 **duckdb** - 🟠 Important, 🟠 Growing community, in-process SQL OLAP database for local query workloads.  
