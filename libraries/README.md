@@ -32,16 +32,24 @@
 **python-dotenv** - 🟡 Useful importance, 🟢 Strong community, loads environment variables from .env files.  
 **uv** - 🔴 High importance, 🟣 Very strong community, ultra-fast asynchronous CLI for Python development.  
 
-## C
+## C-Related Libraries
 **cmath** - 🟢 Standard importance, ⚪ Stable community, complex math functions for Python.  
 **cpython** - 🟢 Standard importance, 🔵 Massive community, reference Python implementation and C API.  
 **numba** - 🟠 Important, 🟡 Active community, JIT compiler for speeding numeric Python code with LLVM.  
 
-## CLI
+## Command-Line Interfaces
 **argparse** - 🟢 Standard importance, ⚪ Stable community, built-in command-line argument parsing.  
 **rich** - 🟠 Important, 🟣 Very strong community, rich text and beautiful terminal formatting library.  
 **textual** - 🟣 Emerging importance, 🟠 Growing community, TUI framework built on Rich for text-based apps.  
 **typer** - 🟠 Important, 🟢 Strong community, modern CLI builder based on type hints and Click.  
+
+## Computer Vision
+**deepsort** - 🟡 Useful importance, 🟡 Active community, tracker for multi-object tracking often paired with detection models.  
+**opencv** - 🔴 High importance, 🔵 Massive community, computer vision library for image/video processing and algorithm building.  
+**pillow** - 🟢 Standard importance, 🟢 Strong community, Python Imaging Library fork for image opening, manipulating, and saving.  
+**scikit-image** - 🟠 Important, 🟢 Strong community, image processing library for scientific computing.  
+**torchvision** - 🟠 Important, 🟣 Very strong community, vision models and image utilities that complement PyTorch.  
+**ultralytics** - 🟣 Emerging importance, 🟠 Growing community, user-friendly PyTorch-based object detection suite (YOLO).  
 
 ## Concurrency
 **anyio** - 🟠 Important, 🟡 Active community, async compatibility layer for asyncio and trio.  
@@ -52,14 +60,6 @@
 **subprocess** - 🟢 Standard importance, ⚪ Stable community, spawn and manage external processes.  
 **threading** - 🟢 Standard importance, ⚪ Stable community, thread-based concurrency primitives.  
 **trio** - 🟠 Important, 🟡 Active community, alternate async framework focused on structured concurrency.  
-
-## Computer Vision
-**deepsort** - 🟡 Useful importance, 🟡 Active community, tracker for multi-object tracking often paired with detection models.  
-**opencv** - 🔴 High importance, 🔵 Massive community, computer vision library for image/video processing and algorithm building.  
-**pillow** - 🟢 Standard importance, 🟢 Strong community, Python Imaging Library fork for image opening, manipulating, and saving.  
-**scikit-image** - 🟠 Important, 🟢 Strong community, image processing library for scientific computing.  
-**torchvision** - 🟠 Important, 🟣 Very strong community, vision models and image utilities that complement PyTorch.  
-**ultralytics** - 🟣 Emerging importance, 🟠 Growing community, user-friendly PyTorch-based object detection suite (YOLO).  
 
 ## Data Analytics
 **missingno** - 🟡 Useful importance, 🟠 Growing community, visual missing data analysis for pandas.  
@@ -191,7 +191,7 @@
 **tracemalloc** - 🟢 Standard importance, ⚪ Stable community, memory tracing tool for diagnosing leaks.  
 **unittest** - 🟢 Standard importance, ⚪ Stable community, built-in unit testing framework included with Python.  
 
-## UI
+## User Interfaces
 **customtkinter** - ⚪ Niche importance, 🟠 Growing community, modern themed wrapper around Tkinter.  
 **tkinter** - 🟢 Standard importance, ⚪ Stable community, standard Python GUI toolkit for desktop applications.  
 **nicegui** - 🟣 Emerging importance, 🟠 Growing community, web UI framework for Python.  
