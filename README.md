@@ -34,11 +34,11 @@ A small set of libraries that are especially valuable in day-to-day Python work.
 Libraries are arranged in the following major areas:
 
 🔹 C  
-🔹 CLI  
+🔹 Command-Line Interfaces  
 🔹 Concurrency  
 🔹 Computer Vision  
 🔹 Data Analytics  
-🔹 Database  
+🔹 Databases  
 🔹 Developer Tools  
 🔹 Document Parsing  
 🔹 GraphQL  
@@ -52,7 +52,7 @@ Libraries are arranged in the following major areas:
 🔹 Standard Library  
 🔹 Static Analysis  
 🔹 Testing and Metrics  
-🔹 UI  
+🔹 User Interfaces  
 🔹 Web  
 🔹 Others (niche or specialized libraries)  
 
