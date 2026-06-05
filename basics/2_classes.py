@@ -320,12 +320,39 @@ class Cat(Animal):
         return f"{self.name} meows: Meow!"
 
 
+class Bird(Animal):
+    """Child class using super() to initialize the parent class"""
+
+    def __init__(self, name, can_fly=True):
+        # super() returns a proxy object that calls the parent class methods
+        super().__init__(name)
+        self.can_fly = can_fly
+
+    def speak(self):
+        return f"{self.name} tweets: Tweet!"
+
+    def info(self):
+        return f"{self.name} can fly: {self.can_fly}"
+
+    def parent_speak(self):
+        # This calls the parent class implementation of speak()
+        return super().speak()
+
+
 print("\n--- Inheritance Example ---")
 dog = Dog2("Rex")
 cat = Cat("Whiskers")
+bird = Bird("Tweety", can_fly=False)
 
 print(dog.speak())  # Uses Dog's speak method
 print(cat.speak())  # Uses Cat's speak method
+print(bird.speak())  # Uses Bird's speak method
+print(bird.info())
+print("Bird parent speak():", bird.parent_speak())
+
+print("\n--- Using super() ---")
+print("Bird name from parent initialization:", bird.name)
+print("Bird class can call the parent __init__ using super()")
 
 # ============================================================
 # 10. SUMMARY AND KEY CONCEPTS

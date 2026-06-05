@@ -73,7 +73,57 @@ except KeyError as error:
 print("After outer() catch")
 
 # ============================================================
-# 2. IMPORT RESOLUTION MECHANICS
+# 2. COMMON BUILT-IN EXCEPTION TYPES
+# ============================================================
+# Python has many built-in exceptions. Here are the most common ones:
+# - SyntaxError: invalid Python syntax
+# - NameError: undefined variable or name
+# - TypeError: wrong type for an operation
+# - ValueError: invalid value for an operation
+# - IndexError: sequence index out of range
+# - KeyError: missing dictionary key
+# - AttributeError: missing object attribute
+# - ZeroDivisionError: division by zero
+# - FileNotFoundError: missing file
+# - ImportError / ModuleNotFoundError: import failure
+# - OSError: operating system-related error
+# - RuntimeError: generic runtime error
+# - StopIteration: iterator exhausted
+# - KeyboardInterrupt: manual interruption (Ctrl+C)
+
+print("\n--- Common Built-in Exception Types ---")
+
+examples = [
+    ("SyntaxError", "eval('x===' )", SyntaxError),
+    ("NameError", "undefined_variable", NameError),
+    ("TypeError", "len(5)", TypeError),
+    ("ValueError", "int('abc')", ValueError),
+    ("IndexError", "[1, 2, 3][5]", IndexError),
+    ("KeyError", "{'a': 1}['b']", KeyError),
+    ("AttributeError", "(5).fake_attr", AttributeError),
+    ("ZeroDivisionError", "1 / 0", ZeroDivisionError),
+    ("FileNotFoundError", "open('nonexistent.txt')", FileNotFoundError),
+    ("ImportError", "__import__('missing_module')", ImportError),
+    ("OSError", "open('/does/not/exist', 'r')", OSError),
+]
+
+for name, code, expected in examples:
+    try:
+        print(f"Testing {name}...")
+        eval(code)
+    except expected as error:
+        print(f"  Caught {name}:", type(error).__name__, error)
+    except Exception as error:
+        print(
+            f"  Caught other exception while testing {name}:",
+            type(error).__name__,
+            error,
+        )
+
+print("\nThese are the most common built-in exceptions you will see in Python.")
+
+# ============================================================
+# 3. IMPORT RESOLUTION MECHANICS
 # ============================================================
 # Python finds modules using the import system and sys.path list.
 # It first checks built-in modules, then the current directory,
@@ -99,7 +149,7 @@ print("math.sqrt(16)=", math.sqrt(16))
 # If you have a package, Python will try to load modules from package directories.
 
 # ============================================================
-# 3. ABSOLUTE VS RELATIVE IMPORTS
+# 4. ABSOLUTE VS RELATIVE IMPORTS
 # ============================================================
 # Absolute imports refer to the full package path.
 # Relative imports use dots to navigate the package structure.
@@ -136,7 +186,7 @@ print("  from ..helpers import helper_function")
 # Relative imports only work inside packages, not from a top-level script.
 
 # ============================================================
-# 4. GLOBAL ENTRYPOINT
+# 5. GLOBAL ENTRYPOINT
 # ============================================================
 # The global entrypoint is the code that runs when a script is executed.
 # Use if __name__ == '__main__' to make code run only when a file is executed directly,

@@ -1,4 +1,4 @@
-# Libraries to Learn
+# Libraries and Tools to Learn
 - This is a subjective list of libraries to learn, based on my experience and the current Python ecosystem.  
 - The importance and community levels are meant to provide a general sense of how widely used and supported each library is, but they may vary depending on your specific use case and interests.  
 - Always consider your own needs and project requirements when choosing which libraries to learn and use.  

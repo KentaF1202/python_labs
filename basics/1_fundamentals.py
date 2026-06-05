@@ -179,6 +179,93 @@ my_age = calculate_age(2000)
 print("Your age:", my_age)  # Prints: Your age: 24
 
 # ============================================================
+# 7.1 KEYWORD ARGUMENTS AND TYPE HINTS
+# ============================================================
+# Keyword arguments let you pass values using parameter names.
+# This makes your calls easier to read and allows order to change.
+
+
+def describe_person(name, age, city="Unknown"):
+    print(f"{name} is {age} years old and lives in {city}.")
+
+
+# Call by position
+describe_person("Alice", 30, "Seattle")
+
+# Call by keyword name
+describe_person(name="Bob", age=25, city="Paris")
+
+# Mix position and keyword arguments
+describe_person("Emma", city="Tokyo", age=22)
+
+# Default values make some arguments optional
+describe_person("Charlie", 28)
+
+# Type hints show expected input and output types.
+# They help people and tools understand your code, but Python still runs normally.
+
+
+def add_numbers(a: int, b: int) -> int:
+    result: int = a + b
+    return result
+
+
+sum_result = add_numbers(5, 3)
+print("5 + 3 =", sum_result)
+
+
+def greet_with_type(name: str, greeting: str = "Hello") -> None:
+    print(f"{greeting}, {name}!")
+
+
+# greet_with_type("Alice")
+greet_with_type("Alice")
+greet_with_type(name="Bob", greeting="Hi")
+
+# Type hints also work for more complex values
+
+
+def format_price(price: float) -> str:
+    return f"${price:.2f}"
+
+
+print(format_price(19.99))  # Prints: $19.99
+
+# ============================================================
+# 7.2 VARIABLE KEYWORD AND POSITIONAL ARGUMENTS
+# ============================================================
+# *args collects extra positional arguments into a tuple.
+# **kwargs collects extra keyword arguments into a dictionary.
+
+
+def print_scores(*scores: int) -> None:
+    print("Scores:", scores)
+
+
+print_scores(10, 20, 30)
+print_scores(5, 8)
+
+
+def print_person_info(name: str, **info: str) -> None:
+    print(f"Name: {name}")
+    for key, value in info.items():
+        print(f"{key}: {value}")
+
+
+print_person_info("Alice", age="30", city="Berlin", job="Engineer")
+
+# You can also combine normal, *args, and **kwargs in one function.
+
+
+def show_values(first: int, *rest: int, **properties: str) -> None:
+    print("First value:", first)
+    print("Rest values:", rest)
+    print("Properties:", properties)
+
+
+show_values(1, 2, 3, 4, color="blue", size="large")
+
+# ============================================================
 # 8. PUTTING IT ALL TOGETHER
 # ============================================================
 # Let's create a simple program that uses all these concepts

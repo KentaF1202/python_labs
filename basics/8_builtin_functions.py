@@ -163,23 +163,38 @@ print("\n--- zip(), enumerate(), reversed(), sorted() ---")
 
 letters = ["a", "b", "c"]
 numbers = [1, 2, 3]
+more_numbers = [10, 20]
 
-# zip pairs items from multiple iterables
+# zip pairs items from multiple iterables, stopping at the shortest one.
 print("zip letters and numbers:", list(zip(letters, numbers)))
+print("zip with unequal lengths:", list(zip(letters, more_numbers)))
 
-# enumerate gives index and value
+# You can also unpack zipped pairs directly into variables.
+paired = list(zip(letters, numbers))
+for letter, number in paired:
+    print(f"{letter} -> {number}")
+
+# enumerate gives an index and the value for each item.
 print("enumerate letters:", list(enumerate(letters)))
 for index, letter in enumerate(letters, start=1):
     print(f"Letter {index}: {letter}")
 
-# reversed iterates in reverse order
+# reversed returns an iterator that walks a sequence backwards.
 print("reversed numbers:", list(reversed(numbers)))
+print("reverse a string with reversed:", "".join(reversed("abc")))
 
-# sorted returns a new sorted list
+# sorted returns a new list and leaves the original unchanged.
 unsorted_values = [5, 2, 9, 1]
 print("sorted values:", sorted(unsorted_values))
 print("original unchanged:", unsorted_values)
+
+# Use key to sort by custom criteria, and reverse to invert order.
 print("sorted by absolute value:", sorted([-3, 1, -2], key=abs))
+people = [("Anna", 28), ("Bob", 22), ("Carol", 35)]
+print("sorted by age:", sorted(people, key=lambda item: item[1]))
+print(
+    "sorted by name descending:", sorted(people, key=lambda item: item[0], reverse=True)
+)
 
 # ============================================================
 # 9. ID, HASH, DIR, GLOBALS, LOCALS
@@ -190,14 +205,25 @@ value = "hello"
 print("id(value):", id(value))
 print("hash(value):", hash(value))
 
-# dir shows attributes and methods of an object
-print("dir(value) sample:", [name for name in dir(value) if name.startswith("is")][:5])
+# id() gives a stable identity for the object while it exists.
+# hash() returns a value used by dictionaries and sets for fast lookup.
+print("hash of a tuple:", hash((1, 2, 3)))
+try:
+    print("hash of a list:", hash([1, 2, 3]))
+except TypeError as exc:
+    print("list is unhashable:", exc)
 
-# globals() returns the current global namespace dictionary
+# dir() lists attributes and methods for an object or module.
+print("dir(value) sample:", [name for name in dir(value) if name.startswith("is")][:5])
+print(
+    "dir(people) sample:", [name for name in dir(people) if name.startswith("co")][:5]
+)
+
+# globals() returns the module-level namespace dictionary.
 print("'numbers' in globals():", "numbers" in globals())
 
 
-# locals() returns the current local namespace dictionary
+# locals() returns the current local namespace dictionary.
 def show_locals():
     local_var = 123
     print("local_var in locals():", "local_var" in locals())
@@ -205,6 +231,9 @@ def show_locals():
 
 
 show_locals()
+
+# In a function, modifying locals() may not update actual local variables.
+# Use locals() mainly for inspection.
 
 # ============================================================
 # 10. TYPE CHECKS AND ATTRIBUTE ACCESS
@@ -225,16 +254,20 @@ class Dog(Animal):
 
 print("isinstance(Dog('Fido'), Dog):", isinstance(Dog("Fido"), Dog))
 print("isinstance(Dog('Fido'), Animal):", isinstance(Dog("Fido"), Animal))
+print("isinstance(Dog('Fido'), object):", isinstance(Dog("Fido"), object))
 print("issubclass(Dog, Animal):", issubclass(Dog, Animal))
 print("issubclass(Animal, Dog):", issubclass(Animal, Dog))
 
 pet = Dog("Fido")
 print("hasattr(pet, 'name'):", hasattr(pet, "name"))
 print("getattr(pet, 'name'):", getattr(pet, "name"))
+print("getattr(pet, 'age', 'unknown'):", getattr(pet, "age", "unknown"))
 setattr(pet, "age", 5)
 print("getattr(pet, 'age') after setattr:", getattr(pet, "age"))
 delattr(pet, "age")
 print("hasattr(pet, 'age') after delattr:", hasattr(pet, "age"))
+
+# getattr() with a default avoids AttributeError when the attribute is missing.
 
 # ============================================================
 # 11. ITER and NEXT
@@ -246,8 +279,23 @@ iterator = iter(iterable)
 print("next(iterator):", next(iterator))
 print("next(iterator):", next(iterator))
 print("next(iterator):", next(iterator))
-# The next call below would raise StopIteration if uncommented
-# print(next(iterator))
+
+# Manual iteration with next() must handle StopIteration.
+iterator = iter(iterable)
+while True:
+    try:
+        item = next(iterator)
+        print("got:", item)
+    except StopIteration:
+        print("iterator exhausted")
+        break
+
+# iter() can also create a sentinel iterator from a callable.
+with open(__file__, "r") as f:
+    line_iter = iter(f.readline, "")
+    print("first line from file using sentinel iter():", next(line_iter).strip())
+
+# Iterators are single-pass objects. Once exhausted, they do not restart.
 
 # ============================================================
 # 12. CALLABLE
@@ -257,6 +305,22 @@ print("\n--- callable() ---")
 print("callable(add):", callable(add))
 print("callable(42):", callable(42))
 print("callable(lambda x: x):", callable(lambda x: x))
+print("callable(Dog):", callable(Dog))
+
+
+class Greeter:
+    def __init__(self, greeting):
+        self.greeting = greeting
+
+    def __call__(self, name):
+        return f"{self.greeting}, {name}!"
+
+
+say_hello = Greeter("Hello")
+print("callable(say_hello):", callable(say_hello))
+print("say_hello('World'):", say_hello("World"))
+
+# callable() is useful when you accept either a function or an object that behaves like one.
 
 # ============================================================
 # 13. EVAL and EXEC
@@ -266,10 +330,21 @@ print("\n--- eval() and exec() ---")
 expr = "2 + 3 * 4"
 print("eval(expr):", eval(expr))
 
+# eval() can use a specific globals dictionary for controlled evaluation.
+namespace = {"x": 5}
+print("eval('x + 1', namespace):", eval("x + 1", namespace))
+
+# exec() runs statements and can define new names in a namespace.
 code = 'result = 10\nprint("exec result:", result)'
-exec(code)
+exec(code, namespace)
+print("namespace['result']:", namespace.get("result"))
 
 # Use eval and exec carefully; they execute dynamic code and can be unsafe with untrusted input.
+# For simple literal parsing, prefer ast.literal_eval instead of eval.
+import ast
+
+safe_value = ast.literal_eval("[1, 2, 3]")
+print("ast.literal_eval safe parse:", safe_value)
 
 # ============================================================
 # 14. SUMMARY
