@@ -28,6 +28,17 @@ import os
 # }
 # ```
 
+# import os
+# from io import StringIO
+# from dotenv import load_dotenv
+
+# def test_database_connection_fallback():
+#     # Force a test configuration entirely in memory
+#     test_env = StringIO("DATABASE_URL=sqlite:///:memory:\nDEBUG=True")
+#     load_dotenv(stream=test_env, override=True)
+    
+#     assert os.environ.get("DEBUG") == "True"
+
 def main() -> None:
     load_dotenv()
     print(os.getenv("TEST_VAR", 8080))
