@@ -24,7 +24,7 @@ pip install python-dotenv
 1. Create a `.env` file in your project root with key-value pairs `KEY=VALUE`.
 2. Add `.env` to your `.gitignore`, **especially** if it
 contains secrets like a password.
-3. In your Python code, call `load_dotenv()` at the start of your application.
+3. In your Python code, import and call `load_dotenv()` at the start of your application.
 4. Access your variables via `os.getenv("KEY")`
 
 ## 🔋 Evaluation
@@ -42,18 +42,23 @@ Use it when you want the lowest-risk way to make local `.env` configuration beha
 Before diving into the library, its important to understand what environment variables are and the software design problem this library is attempting to solve.
 
 ### What are Environment Variables?
-Explain what environment variables are
-child processes take env var from parent and clone them
-children CRUD independently from parents
+Environment variables are **key-value** pairs that are used in operating systems to store configuration settings and other information. They are typically made in the shell automatically but can be configured manually.
 
+Every time a child process is created, it inherits a copy of the environment variables from their parent process. These copies are independent of their parents, meaning that changes to a child process's environment variables do not affect the parent process's environment variables, and vice versa.
 <details>
-<summary>CRUD env vars in bash/powershell</summary>
+<summary>Interacting with environment variables in bash</summary>
+how to CRUD env in bash (linux) and ps (windows)
+export to bring var to env
+to make permanent `export key=value` must be in ~/.bashrc file and source ~/.bashrc
+</details>
+<details>
+<summary>Interacting with environment variables in powershell</summary>
 how to CRUD env in bash (linux) and ps (windows)
 export to bring var to env
 to make permanent `export key=value` must be in ~/.bashrc file and source ~/.bashrc
 </details>
 
-### 12 Factor Principles and Config
+### 12 Factor Principles
 [12 factor principles](https://12factor.net/) specifically #3 [Config](https://12factor.net/config) and #4 [Backing services](https://12factor.net/backing-services) are relevant here. The 12 factor app design pattern emphasizes storing config in the environment, which is a common practice for 12 factor apps. This allows for separation of config from code and makes it easier to manage different environments (development, staging, production) without changing the codebase.
 
 ## Architectural Philosophy
